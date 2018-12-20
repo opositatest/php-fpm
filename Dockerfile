@@ -10,6 +10,7 @@ RUN apt-get update && apt-get install --no-install-recommends -y \
     libxml2-dev \
     unzip \
     git \
+    ssh-keyscan \
     gnupg \
 && rm -rf /var/lib/apt/lists/* \
 && curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer \
