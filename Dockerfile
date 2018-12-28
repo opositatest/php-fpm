@@ -1,4 +1,4 @@
-FROM php:7.2-fpm
+FROM php:7.3-fpm
 
 RUN apt-get update && apt-get install --no-install-recommends -y \
     libfreetype6-dev \
@@ -9,6 +9,7 @@ RUN apt-get update && apt-get install --no-install-recommends -y \
     libicu-dev \
     libxml2-dev \
     unzip \
+    libzip-dev \
     git \
     ssh \
     gnupg \
@@ -26,6 +27,6 @@ RUN apt-get update && apt-get install --no-install-recommends -y \
 && docker-php-ext-install opcache \
 && docker-php-ext-install bcmath \
 && docker-php-ext-install xmlrpc \
-&& pecl install apcu-5.1.5 \
+&& pecl install apcu-5.1.16 \
 && docker-php-ext-enable apcu \
 && composer global require "hirak/prestissimo:^0.3" --prefer-dist --no-progress --no-suggest --optimize-autoloader --classmap-authoritative  --no-interaction
