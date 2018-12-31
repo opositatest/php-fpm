@@ -30,3 +30,7 @@ RUN apt-get update && apt-get install --no-install-recommends -y \
 && pecl install apcu-5.1.16 \
 && docker-php-ext-enable apcu \
 && composer global require "hirak/prestissimo:^0.3" --prefer-dist --no-progress --no-suggest --optimize-autoloader --classmap-authoritative  --no-interaction
+
+
+COPY entrypoint.sh /entrypoint.sh
+COPY config/ /usr/local/etc/php/config/
