@@ -15,6 +15,16 @@ else
     cp $PHP_INI_DIR/php.ini-production $PHP_INI_DIR/php.ini
 fi
 
+
+if [[ "$XDEBUG" = "yes" ]];
+then
+    echo "executing php with xdebug"
+    cp $PHP_INI_DIR/config/xdebug.ini $PHP_INI_DIR/conf.d/xdebug.ini
+else
+    echo "Removing xdebug in production mode"
+    rm /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini
+fi
+
 # first arg is `-f` or `--some-option`
 if [ "${1#-}" != "$1" ]; then
 	set -- php-fpm "$@"
