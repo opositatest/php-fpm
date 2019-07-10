@@ -15,6 +15,13 @@ else
     cp $PHP_INI_DIR/php.ini-production $PHP_INI_DIR/php.ini
 fi
 
+if [[ "$NEWRELIC" = "yes" ]];
+then
+    echo "executing with newrelic daemon"
+else
+    echo "Removing newrelic configuration"
+    [ -f "/usr/local/etc/php/conf.d/newrelic.ini" ] && rm "/usr/local/etc/php/conf.d/newrelic.ini"
+fi
 
 if [[ "$XDEBUG" = "yes" ]];
 then
@@ -22,7 +29,7 @@ then
     cp $PHP_INI_DIR/config/xdebug.ini $PHP_INI_DIR/conf.d/xdebug.ini
 else
     echo "Removing xdebug in production mode"
-    rm /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini
+    [ -f "/usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini" ] && rm "/usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini"
 fi
 
 # first arg is `-f` or `--some-option`
