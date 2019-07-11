@@ -1,4 +1,4 @@
-FROM php:7.2-fpm
+FROM php:7.2.19-fpm
 
 COPY entrypoint.sh /entrypoint.sh
 COPY config/ /usr/local/etc/php/config/
