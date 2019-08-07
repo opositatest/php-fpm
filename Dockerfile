@@ -1,4 +1,4 @@
-FROM php:7.2.19-fpm
+FROM php:7.3-fpm
 
 COPY entrypoint.sh /entrypoint.sh
 COPY config/ /usr/local/etc/php/config/
@@ -31,7 +31,7 @@ RUN apt-get update && apt-get install --no-install-recommends -y \
 && docker-php-ext-install opcache \
 && docker-php-ext-install bcmath \
 && docker-php-ext-install xmlrpc \
-&& pecl install xdebug-2.6.1 \
+&& pecl install xdebug-2.7.2 \
 && docker-php-ext-enable xdebug \
 && pecl install apcu-5.1.16 \
 && docker-php-ext-enable apcu \
