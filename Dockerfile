@@ -9,7 +9,7 @@ RUN apt-get update && apt-get install --no-install-recommends -y \
     libjpeg62-turbo-dev \
     libpng-dev \
     libmcrypt-dev \
-    mysql-client \
+    mariadb-client \
     libicu-dev \
     libxml2-dev \
     unzip \
