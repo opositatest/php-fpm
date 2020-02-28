@@ -1,0 +1,17 @@
+version: '3.7'
+services:
+  php:
+    build: .
+    volumes:
+      - ./test/index.php:/var/www/html/web/index.php
+    environment:
+      - APP_ENV=${APP_ENV}
+  sut:
+    image: opositatest/nginx
+    container_name: nginx
+    volumes:
+      - ./test/index.php:/var/www/html/web/index.php
+      - ./test/test.sh:/tmp/test.sh
+    environment:
+      - APP_ENV=${APP_ENV}
+    command: bash /tmp/test.sh
