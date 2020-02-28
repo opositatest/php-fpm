@@ -1,7 +1,8 @@
-version: 2
+version: 3.7
 jobs:
   build:
     machine: true
+      image: ubuntu-1604:201903-01
     steps:
       - checkout
 #          command: |
