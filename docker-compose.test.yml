@@ -13,4 +13,6 @@ services:
       - ./test/test.sh:/tmp/test.sh
     environment:
       - APP_ENV=${APP_ENV}
+    depends_on:
+      - php
     command: bash /tmp/test.sh
