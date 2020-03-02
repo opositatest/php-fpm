@@ -41,3 +41,4 @@ RUN curl -sL https://download.newrelic.com/php_agent/archive/${NEWRELIC}/newreli
     rm -rf /tmp/newrelic-php5-* /tmp/nrinstall*
 
 ENTRYPOINT ["/entrypoint.sh"]
+CMD ["php-fpm"]
