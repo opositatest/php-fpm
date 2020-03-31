@@ -17,7 +17,11 @@ fi
 
 if [[ "$NEWRELIC" = "yes" ]];
 then
-    echo "executing with newrelic daemon"
+    echo "Executing with newrelic daemon"
+    sed -i \
+        -e 's/"REPLACE_WITH_REAL_KEY"/"'$NEW_RELIC_KEY'"/' \
+        -e 's/newrelic.appname = "PHP Application"/newrelic.appname = "'$NEW_RELIC_APP_NAME'"/' \
+        /usr/local/etc/php/conf.d/newrelic.ini
 else
     echo "Removing newrelic configuration"
     [ -f "/usr/local/etc/php/conf.d/newrelic.ini" ] && rm "/usr/local/etc/php/conf.d/newrelic.ini"
@@ -25,7 +29,7 @@ fi
 
 if [[ "$XDEBUG" = "yes" ]];
 then
-    echo "executing php with xdebug"
+    echo "Executing php with xdebug"
     cp $PHP_INI_DIR/config/xdebug.ini $PHP_INI_DIR/conf.d/xdebug.ini
 else
     echo "Removing xdebug in production mode"
