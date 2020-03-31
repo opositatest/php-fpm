@@ -1,7 +1,6 @@
 #!/bin/bash
 set -e
 
-
 THEFILE="$PHP_INI_DIR/conf.d/cusmtom.ini"
 [ -f "$THEFILE" ] && rm "$THEFILE"
 
@@ -19,10 +18,12 @@ fi
 if [[ "$NEWRELIC" = "yes" ]];
 then
     echo "Executing with newrelic daemon"
-    sed -i \
-        -e 's/"REPLACE_WITH_REAL_KEY"/"'$NEW_RELIC_KEY'"/' \
-        -e 's/newrelic.appname = "PHP Application"/newrelic.appname = "'$NEW_RELIC_APP_NAME'"/' \
-        /usr/local/etc/php/conf.d/newrelic.ini
+    if [[ -n $NEW_RELIC_KEY && -n $NEW_RELIC_APP_NAME ]]; then
+        sed -E -i \
+            -e 's/(newrelic.license) = "(.*)"/\1 = "'$NEW_RELIC_KEY'"/' \
+            -e 's/(newrelic.appname) = "(.*)"/\1 = "'$NEW_RELIC_APP_NAME'"/' \
+            /usr/local/etc/php/conf.d/newrelic.ini
+    fi    
 else
     echo "Removing newrelic configuration"
     [ -f "/usr/local/etc/php/conf.d/newrelic.ini" ] && rm "/usr/local/etc/php/conf.d/newrelic.ini"
