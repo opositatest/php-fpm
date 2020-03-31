@@ -1,6 +1,7 @@
 #!/bin/bash
 set -e
 
+
 THEFILE="$PHP_INI_DIR/conf.d/cusmtom.ini"
 [ -f "$THEFILE" ] && rm "$THEFILE"
 
