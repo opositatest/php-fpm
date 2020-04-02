@@ -22,6 +22,7 @@ RUN apt-get update && apt-get install --no-install-recommends -y \
     ssh \
     gnupg \
     libonig-dev \
+    wkhtmltopdf \
     && curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer \
     && docker-php-ext-install iconv pdo_mysql mbstring gettext exif intl zip opcache bcmath xmlrpc \
     && docker-php-ext-configure gd --with-freetype --with-jpeg \
