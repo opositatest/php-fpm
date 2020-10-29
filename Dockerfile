@@ -1,8 +1,8 @@
 FROM php:7.4-fpm-buster
 
-ARG XDEBUG=xdebug-2.9.2
-ARG APCU=apcu-5.1.18
-ARG NEWRELIC=9.10.1.263
+ARG XDEBUG=xdebug-2.9.8
+ARG APCU=apcu-5.1.19
+ARG NEWRELIC=9.13.0.270
 
 COPY entrypoint.sh /entrypoint.sh
 COPY config/ /usr/local/etc/php/config/
@@ -29,8 +29,6 @@ RUN apt-get update && apt-get install --no-install-recommends -y \
     && docker-php-ext-install -j$(nproc) gd \
     && pecl install ${XDEBUG} ${APCU} \
     && docker-php-ext-enable xdebug apcu \
-    && composer global require "hirak/prestissimo:^0.3" \
-        --prefer-dist --no-progress --no-suggest --optimize-autoloader --classmap-authoritative  --no-interaction \
     && chmod 755 /entrypoint.sh \
     && apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
