@@ -1,6 +1,9 @@
 Changelog php-fpm version 7.x
 
 
+* v1.2
+	* Exclude exception NotFoundHttpException, AccessDeniedHttpException in NewRelic
+
 * v1.1
 	* Update newrelic agent
 	* Update apcu
