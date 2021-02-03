@@ -1,6 +1,9 @@
 Changelog php-fpm version 7.x
 
 
+* v1.3
+	* Log limit php-fpm log_limit = 8192 
+
 * v1.2
 	* Exclude exception NotFoundHttpException, AccessDeniedHttpException in NewRelic
 
