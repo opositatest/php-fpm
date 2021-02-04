@@ -1,6 +1,9 @@
 Changelog php-fpm version 7.x
 
 
+* v1.4
+	* Enable newrelic distributed_tracing_enabled
+
 * v1.3
 	* Log limit php-fpm log_limit = 8192 
 

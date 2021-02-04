@@ -24,6 +24,8 @@ then
             -e 's/(newrelic.appname) = "(.*)"/\1 = "'$NEW_RELIC_APP_NAME'"/' \
             -e 's/(newrelic.error_collector.ignore_exceptions) = "(.*)"/\1 = "Symfony\\Component\\HttpKernel\\Exception\\NotFoundHttpException,Symfony\\Component\\HttpKernel\\Exception\\AccessDeniedHttpException"/' \
             -e 's/\;(newrelic.error_collector.ignore_exceptions)/\1/' \
+            -e 's/\;(newrelic.distributed_tracing_enabled)/\1/' \
+            -e 's/(newrelic.distributed_tracing_enabled) = (.*)/\1 = true/' \
             /usr/local/etc/php/conf.d/newrelic.ini
     fi    
 else
