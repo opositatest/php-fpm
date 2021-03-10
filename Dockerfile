@@ -1,8 +1,8 @@
 FROM php:7.4-fpm-buster
 
-ARG XDEBUG=xdebug-2.9.8
-ARG APCU=apcu-5.1.19
-ARG NEWRELIC=9.15.0.293
+ARG XDEBUG=xdebug-3.0.3
+ARG APCU=apcu-5.1.20
+ARG NEWRELIC=9.16.0.295
 
 COPY entrypoint.sh /entrypoint.sh
 COPY config/ /usr/local/etc/php/config/

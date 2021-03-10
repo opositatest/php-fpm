@@ -1,6 +1,9 @@
 Changelog php-fpm version 7.x
 
 
+* v1.5
+	* Update xdebug-3.0.3, apcu-5.1.20, 9.16.0.295
+
 * v1.4
 	* Enable newrelic distributed_tracing_enabled
 
