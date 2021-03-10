@@ -1,6 +1,9 @@
 Changelog php-fpm version 7.x
 
 
+* v1.6
+	* [BC] Change liste to unix socket
+ 
 * v1.5
 	* Update xdebug-3.0.3, apcu-5.1.20, 9.16.0.295
 
