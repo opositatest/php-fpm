@@ -1,5 +1,7 @@
 Changelog php-fpm version 7.x
 
+* v1.6
+	* New optimize config to php-fpm (Up max children, spare and min spare )
 
 * v1.5
 	* Update xdebug-3.0.3, apcu-5.1.20, 9.16.0.295
