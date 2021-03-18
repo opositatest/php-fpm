@@ -6,7 +6,7 @@ ARG NEWRELIC=9.16.0.295
 
 COPY entrypoint.sh /entrypoint.sh
 COPY config/ /usr/local/etc/php/config/
-COPY docker.conf /usr/local/etc/php-fpm.d/docker.conf
+COPY zz-docker.conf /usr/local/etc/php-fpm.d/zz-docker.conf
 
 RUN apt-get update && apt-get install --no-install-recommends -y \
     libfreetype6-dev \
