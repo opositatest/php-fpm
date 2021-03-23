@@ -1,5 +1,8 @@
 Changelog php-fpm version 7.x
 
+* v1.7
+	* Remove access_log output
+
 * v1.6
 	* New optimize config to php-fpm (Up max children, spare and min spare )
 
