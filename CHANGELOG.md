@@ -1,5 +1,8 @@
 Changelog php-fpm version 7.x
 
+* v1.8
+	* Add php-security-checker to base image
+
 * v1.7
 	* Remove access_log output
 
