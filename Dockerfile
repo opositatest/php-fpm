@@ -3,6 +3,7 @@ FROM php:7.4-fpm-buster
 ARG XDEBUG=xdebug-3.0.3
 ARG APCU=apcu-5.1.20
 ARG NEWRELIC=9.16.0.295
+ARG PHP_SECURITY_CHECKER=1.0.0
 
 COPY entrypoint.sh /entrypoint.sh
 COPY config/ /usr/local/etc/php/config/
@@ -38,7 +39,10 @@ RUN curl -sL https://download.newrelic.com/php_agent/archive/${NEWRELIC}/newreli
     export NR_INSTALL_SILENT=1 && \
     /tmp/newrelic-php5-*/newrelic-install install && \
     chown www-data:www-data -R /var/log/newrelic/ && \
-    rm -rf /tmp/newrelic-php5-* /tmp/nrinstall*
+    rm -rf /tmp/newrelic-php5-* /tmp/nrinstall* && \
+    curl -sL "https://github.com/fabpot/local-php-security-checker/releases/download/v${PHP_SECURITY_CHECKER}/local-php-security-checker_${PHP_SECURITY_CHECKER}_linux_amd64" \
+        -o /usr/local/bin/php-security-checker && \
+    chmod +x /usr/local/bin/php-security-checker
 
 ENTRYPOINT ["/entrypoint.sh"]
 CMD ["php-fpm"]
