@@ -42,6 +42,8 @@ else
     [ -f "/usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini" ] && rm "/usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini"
 fi
 
+[[ -f /var/www/html/docker/run_hooks.sh ]] && /var/www/html/docker/run_hooks.sh
+
 # first arg is `-f` or `--some-option`
 if [ "${1#-}" != "$1" ]; then
 	set -- php-fpm "$@"
