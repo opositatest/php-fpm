@@ -1,9 +1,9 @@
-FROM php:7.4-fpm-buster
+FROM php:8.0-fpm-buster
 
-ARG XDEBUG=xdebug-3.0.3
+ARG XDEBUG=xdebug-3.0.4
 ARG APCU=apcu-5.1.20
-ARG NEWRELIC=9.16.0.295
-ARG PHP_SECURITY_CHECKER=1.0.0
+ARG NEWRELIC=9.18.1.303
+ARG PHP_SECURITY_CHECKER=1.1.1
 
 COPY entrypoint.sh /entrypoint.sh
 COPY config/ /usr/local/etc/php/config/
@@ -25,7 +25,7 @@ RUN apt-get update && apt-get install --no-install-recommends -y \
     libonig-dev \
     wkhtmltopdf \
     && curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer \
-    && docker-php-ext-install iconv pdo_mysql mbstring gettext exif intl zip opcache bcmath xmlrpc soap \
+    && docker-php-ext-install iconv pdo_mysql mbstring gettext exif intl zip opcache bcmath xml soap \
     && docker-php-ext-configure gd --with-freetype --with-jpeg \
     && docker-php-ext-install -j$(nproc) gd \
     && pecl install ${XDEBUG} ${APCU} \
