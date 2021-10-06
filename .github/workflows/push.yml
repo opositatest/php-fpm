@@ -1,4 +1,4 @@
-name: Push containers
+name: Push
 on:
   push:
     tags:
@@ -25,7 +25,7 @@ jobs:
     - name: Get the version
       id: get_version
       run: echo ::set-output name=version::${GITHUB_REF/refs\/tags\//}
-      
+
     - name: Build, tag and push image to Dockerhub
       env:
         VERSION: ${{ steps.get_version.outputs.version }}
