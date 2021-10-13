@@ -1,0 +1,34 @@
+name: CICD
+on:
+  push:
+    tags:
+      - '**'
+  workflow_dispatch:
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    env:
+      DOCKERHUB_REPOSITORY: opositatest/php-fpm
+    steps:
+    - uses: actions/checkout@v2
+    - uses: docker/login-action@v1
+      with:
+        username: ${{ secrets.DOCKERHUB_USERNAME }}
+        password: ${{ secrets.DOCKERHUB_PASSWORD }}
+
+    - name: Build
+      run: docker-compose -f docker-compose.test.yml build
+    - name: Run test
+      run: docker-compose -f docker-compose.test.yml up --abort-on-container-exit
+
+    - name: Get the version
+      id: get_version
+      run: echo ::set-output name=version::${GITHUB_REF/refs\/tags\//}
+
+    - name: Build, tag and push image to Dockerhub
+      env:
+        VERSION: ${{ steps.get_version.outputs.version }}
+      run: |
+        docker build -t ${DOCKERHUB_REPOSITORY}:${VERSION} .
+        docker push ${DOCKERHUB_REPOSITORY}:${VERSION}
