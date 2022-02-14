@@ -1,5 +1,14 @@
 Changelog php-fpm version 7.x
 
+* v2.0
+	* Change connection to unix socket
+
+* v1.10
+	* Move to github workflows
+
+* v1.9
+	* Add run hooks script exec
+
 * v1.8
 	* Add php-security-checker to base image
 
