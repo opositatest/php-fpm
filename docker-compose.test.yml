@@ -4,6 +4,7 @@ services:
     build: .
     volumes:
       - ./test/index.php:/var/www/html/web/index.php
+      - php_unix_socket:/run/php/
     environment:
       - APP_ENV=${APP_ENV}
   sut:
@@ -11,8 +12,12 @@ services:
     volumes:
       - ./test/index.php:/var/www/html/web/index.php
       - ./test/test.sh:/tmp/test.sh
+      - php_unix_socket:/run/php/
     environment:
       - APP_ENV=${APP_ENV}
     depends_on:
       - php
     command: bash /tmp/test.sh
+
+volumes:
+  php_unix_socket:
