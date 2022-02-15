@@ -8,7 +8,7 @@ env:
   DOCKERHUB_REPOSITORY: opositatest/php-fpm
 
 jobs:
-  test:
+  cicd:
     runs-on: ubuntu-latest
     timeout-minutes: 20
     steps:
