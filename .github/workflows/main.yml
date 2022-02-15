@@ -34,6 +34,7 @@ jobs:
 
     - name: Build, tag and push image to Dockerhub
       env:
+        LATEST: ${{ steps.latest.outputs.latest }}
         VERSION: ${{ steps.get_version.outputs.version }}
       run: |
         [[ ${LATEST} == "true" ]] && version="latest" || version=${VERSION}
