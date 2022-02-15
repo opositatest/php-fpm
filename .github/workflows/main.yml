@@ -5,7 +5,7 @@ on:
     branches: [ "main" ]
   workflow_dispatch:
 env:
-      DOCKERHUB_REPOSITORY: opositatest/php-fpm
+  DOCKERHUB_REPOSITORY: opositatest/php-fpm
 
 jobs:
   test:
