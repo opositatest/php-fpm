@@ -1,7 +1,5 @@
 name: Test
 on:
-  push:
-    branches: ["main", "7.4"]
   pull_request:
     branches: ["main", "7.4"]
   workflow_dispatch:
