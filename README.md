@@ -1,3 +1,5 @@
+![Github Actions](https://github.com/opositatest/php-fpm/actions/workflows/test.yml/badge.svg)
+
 Opositatest php-fpm
 ---
 
