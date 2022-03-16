@@ -1,4 +1,4 @@
-FROM php:8.1-fpm-buster
+FROM php:8.0-fpm-buster
 
 ARG XDEBUG=xdebug-3.1.3
 ARG APCU=apcu-5.1.21
