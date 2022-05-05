@@ -2,8 +2,8 @@ FROM php:7.4-fpm-buster
 
 ARG XDEBUG=xdebug-3.1.3
 ARG APCU=apcu-5.1.21
-ARG NEWRELIC=9.18.1.303
-ARG PHP_SECURITY_CHECKER=1.2.0
+ARG NEWRELIC=9.21.0.311
+ARG PHP_SECURITY_CHECKER=2.0.3
 
 COPY entrypoint.sh /entrypoint.sh
 COPY config/ /usr/local/etc/php/config/
