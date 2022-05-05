@@ -1,7 +1,10 @@
 #!/bin/bash
 set -e
 
+
 THEFILE="$PHP_INI_DIR/conf.d/cusmtom.ini"
+NEW_RELIC_IGNORE='Symfony\\Component\\HttpKernel\\Exception\\NotFoundHttpException,Symfony\\Component\\HttpKernel\\Exception\\AccessDeniedHttpException,Symfony\\Component\\HttpKernel\\Exception\\MethodNotAllowedHttpException'
+
 [ -f "$THEFILE" ] && rm "$THEFILE"
 
 echo "Executing app in mode $APP_ENV"
@@ -19,14 +22,11 @@ if [[ "$NEWRELIC" = "yes" ]];
 then
     echo "Executing with newrelic daemon"
     if [[ -n $NEW_RELIC_KEY && -n $NEW_RELIC_APP_NAME ]]; then
-        NEW_RELIC_IGNORE='Symfony\\Component\\HttpKernel\\Exception\\NotFoundHttpException,Symfony\\Component\\HttpKernel\\Exception\\AccessDeniedHttpException,Symfony\\Component\\HttpKernel\\Exception\\MethodNotAllowedHttpException'
         sed -E -i \
-            -e 's/(newrelic.license) = "(.*)"/\1 = "'$NEW_RELIC_KEY'"/' \
-            -e "s/(newrelic.error_collector.ignore_exceptions) = \"(.*)\"/\1 = \"$NEW_RELIC_IGNORE\"/" \
-            -e 's/(newrelic.appname) = "(.*)"/\1 = "'$NEW_RELIC_APP_NAME'"/' \
-            -e 's/\;(newrelic.error_collector.ignore_exceptions)/\1/' \
-            -e 's/\;(newrelic.distributed_tracing_enabled)/\1/' \
-            -e 's/(newrelic.distributed_tracing_enabled) = (.*)/\1 = true/' \
+            -e 's/(newrelic.license) =.*/\1 = "'$NEW_RELIC_KEY'"/' \
+            -e 's/(newrelic.appname) =.*/\1 = "'$NEW_RELIC_APP_NAME'"/' \
+            -e "s/;*(newrelic.error_collector.ignore_exceptions) =.*/\1 = \"$NEW_RELIC_IGNORE\"/" \
+            -e 's/;*(newrelic.distributed_tracing_enabled) =.*/\1 = false/' \
             /usr/local/etc/php/conf.d/newrelic.ini
     fi    
 else
