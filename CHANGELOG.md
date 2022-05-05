@@ -1,5 +1,11 @@
 Changelog php-fpm version 7.x
 
+* v3.1
+	* Disable distrbuted tracing in New Relic
+
+* v3.0
+	* Upgrade to php-fpm 8.1.x
+
 * v2.0
 	* Change connection to unix socket
 
