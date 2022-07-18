@@ -1,5 +1,8 @@
 Changelog php-fpm version 7.x
 
+* v3.2
+	* Update php and dependencies
+
 * v3.1
 	* Disable distrbuted tracing in New Relic
 
