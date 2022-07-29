@@ -1,8 +1,8 @@
 #!/bin/bash
 set -e
 
-
 THEFILE="$PHP_INI_DIR/conf.d/cusmtom.ini"
+SCRIPT_INIT_DIR='/var/www/html/docker/init.d'
 NEW_RELIC_IGNORE='Symfony\\Component\\HttpKernel\\Exception\\NotFoundHttpException,Symfony\\Component\\HttpKernel\\Exception\\AccessDeniedHttpException,Symfony\\Component\\HttpKernel\\Exception\\MethodNotAllowedHttpException'
 
 [ -f "$THEFILE" ] && rm "$THEFILE"
