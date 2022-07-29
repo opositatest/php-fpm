@@ -1,6 +1,7 @@
 #!/bin/bash
 set -e
 
+SCRIPT_INIT_DIR='/var/www/html/docker/init.d'
 THEFILE="$PHP_INI_DIR/conf.d/cusmtom.ini"
 [ -f "$THEFILE" ] && rm "$THEFILE"
 
@@ -41,7 +42,12 @@ else
     [ -f "/usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini" ] && rm "/usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini"
 fi
 
-[[ -f /var/www/html/docker/run_hooks.sh ]] && /var/www/html/docker/run_hooks.sh
+# Run all scripts in the init.d directory
+if [[ -d $SCRIPT_INIT_DIR ]]; then
+    for script in "$SCRIPT_INIT_DIR/*.sh"; do
+        [[ -s $script ]] && "$script"
+    done
+fi
 
 # first arg is `-f` or `--some-option`
 if [ "${1#-}" != "$1" ]; then
