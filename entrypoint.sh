@@ -45,7 +45,7 @@ fi
 
 # Run all scripts in the init.d directory
 if [[ -d $SCRIPT_INIT_DIR ]]; then
-    for script in "$SCRIPT_INIT_DIR/*.sh"; do
+    for script in $SCRIPT_INIT_DIR/*.sh; do
         [[ -s $script ]] && "$script"
     done
 fi
