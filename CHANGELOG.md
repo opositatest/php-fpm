@@ -1,5 +1,8 @@
 Changelog php-fpm version 7.x
 
+* v2.3
+	* Update dependencies
+
 * v2.2
 	* Added a handler to run all scripts in init.d folder before running the php-fpm service
 	* Migrated Xdebug setting from v2 to v3
