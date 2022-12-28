@@ -1,5 +1,8 @@
 Changelog php-fpm version 8.x
 
+* v3.5
+	* Update to PHP 8.1.13
+
 * v3.4
 	* Update dependencies
 
