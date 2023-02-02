@@ -1,4 +1,9 @@
+
 Changelog php-fpm version 7.x
+
+
+* v2.4
+	* Update newrelic agent
 
 * v2.3
 	* Update dependencies
