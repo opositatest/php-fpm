@@ -1,6 +1,6 @@
 Changelog php-fpm version 8.x
 
-* v3.5
+* v3.6
 	* Update to PHP 8.1.14
 	* Update newrelic to 10.5.0.317, performance issues
 
