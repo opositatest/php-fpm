@@ -1,8 +1,8 @@
-FROM php:8.1-fpm-buster
+FROM php:8.2-fpm-buster
 
 ARG XDEBUG=xdebug-3.2.0
 ARG APCU=apcu-5.1.22
-ARG NEWRELIC=10.5.0.317
+ARG NEWRELIC=10.9.0.324
 ARG PHP_SECURITY_CHECKER=2.0.6
 
 COPY entrypoint.sh /entrypoint.sh

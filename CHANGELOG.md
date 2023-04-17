@@ -1,5 +1,9 @@
 Changelog php-fpm version 8.x
 
+* v3.8
+	* Update to PHP 8.2.5
+	* Update newrelic to 110.9.0.324
+
 * v3.7
 	* Added support for PostgreSQL
 	
