@@ -1,5 +1,10 @@
 Changelog php-fpm version 8.x
 
+* v3.10
+	* Update PHP to 8.2.12
+	* Update newrelic to 10.14.0.3
+	* Update apcu to 5.1.23
+
 * v3.9
 	* Update to PHP 8.2.7
 	* Update newrelic to 10.11.0.3
