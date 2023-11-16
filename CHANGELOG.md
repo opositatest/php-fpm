@@ -1,5 +1,8 @@
 Changelog php-fpm version 8.x
 
+* v3.11
+	* Change config paramter xdebug.start_with_request to trigger
+
 * v3.10
 	* Update PHP to 8.2.12
 	* Update newrelic to 10.14.0.3
