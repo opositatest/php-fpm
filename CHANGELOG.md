@@ -1,5 +1,8 @@
 Changelog php-fpm version 8.x
 
+* v3.12
+	* Add execution mode "command"
+
 * v3.11
 	* Change config paramter xdebug.start_with_request to trigger
 
