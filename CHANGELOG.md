@@ -1,7 +1,13 @@
 Changelog php-fpm version 8.x
 
-* v3.12
+* v3.14
 	* Add execution mode "command"
+
+* v3.13
+	* Add amqp php extension
+
+* v3.12
+	* Update xdebug	client host
 
 * v3.11
 	* Change config paramter xdebug.start_with_request to trigger
