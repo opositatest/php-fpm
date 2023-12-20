@@ -42,18 +42,9 @@ else
     [ -f "/usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini" ] && rm "/usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini"
 fi
 
-if [[ "$PHP_EXECUTION_MODE" = "command" ]];
+if [[ "$PHP_EXECUTION_MODE" = "command" && "$NEWRELIC" = "yes" ]];
 then
     echo "Executing php in command mode"
-    if [[ -n $NEW_RELIC_KEY && -n $NEW_RELIC_APP_NAME ]]; then
-        NEW_RELIC_IGNORE='Symfony\\Component\\HttpKernel\\Exception\\NotFoundHttpException,Symfony\\Component\\HttpKernel\\Exception\\AccessDeniedHttpException,Symfony\\Component\\HttpKernel\\Exception\\MethodNotAllowedHttpException'
-        sed -E -i \
-            -e 's/(newrelic.license) =.*/\1 = "'$NEW_RELIC_KEY'"/' \
-            -e 's/(newrelic.appname) =.*/\1 = "'$NEW_RELIC_APP_NAME'"/' \
-            -e "s/;*(newrelic.error_collector.ignore_exceptions) =.*/\1 = \"$NEW_RELIC_IGNORE\"/" \
-            -e 's/;*(newrelic.distributed_tracing_enabled) =.*/\1 = false/' \
-            /usr/local/etc/php/conf.d/newrelic.ini
-    fi    
     #Dummy request to connect the app to New Relic and give it a second to finish
     php -i > /dev/null
     sleep 1
@@ -76,7 +67,7 @@ echo "Executing entrypoint: $@"
 
 exec "$@"
 
-if [[ "$PHP_EXECUTION_MODE" = "command" ]];
+if [[ "$PHP_EXECUTION_MODE" = "command" && "$NEWRELIC" = "yes" ]];
 then
     #Give it some time to report data to New Relic before container shuts down
     sleep 60
