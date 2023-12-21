@@ -45,6 +45,10 @@ fi
 if [[ "$PHP_EXECUTION_MODE" = "command" && "$NEWRELIC" = "yes" ]];
 then
     echo "Executing php in command mode"
+    #copy default config in order to start daemon
+    cp /etc/newrelic/newrelic.cfg.template /etc/newrelic/newrelic.cfg
+    #start the daemon manually
+    /etc/init.d/newrelic-daemon restart
     #Dummy request to connect the app to New Relic and give it a second to finish
     php -i > /dev/null
     sleep 1
