@@ -49,9 +49,6 @@ then
     cp /etc/newrelic/newrelic.cfg.template /etc/newrelic/newrelic.cfg
     #start the daemon manually
     /etc/init.d/newrelic-daemon restart
-    #Dummy request to connect the app to New Relic and give it a second to finish
-    php -i > /dev/null
-    sleep 1
 fi
 
 
