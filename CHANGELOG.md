@@ -1,5 +1,8 @@
 Changelog php-fpm version 8.x
 
+* v3.15
+	* Start newrelic daemon on command execution mode
+
 * v3.14
 	* Add execution mode "command"
 
