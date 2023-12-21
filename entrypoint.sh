@@ -45,9 +45,9 @@ fi
 if [[ "$PHP_EXECUTION_MODE" = "command" && "$NEWRELIC" = "yes" ]];
 then
     echo "Executing php in command mode"
-    #copy default config in order to start daemon
+    # Copy default config in order to start daemon
     cp /etc/newrelic/newrelic.cfg.template /etc/newrelic/newrelic.cfg
-    #start the daemon manually
+    # Start the daemon manually
     /etc/init.d/newrelic-daemon restart
 fi
 
@@ -59,17 +59,19 @@ if [[ -d $SCRIPT_INIT_DIR ]]; then
     done
 fi
 
-# first arg is `-f` or `--some-option`
+# First arg is `-f` or `--some-option`
 if [ "${1#-}" != "$1" ]; then
 	set -- php-fpm "$@"
 fi
 
 echo "Executing entrypoint: $@"
 
-exec "$@"
-
 if [[ "$PHP_EXECUTION_MODE" = "command" && "$NEWRELIC" = "yes" ]];
 then
-    #Give it some time to report data to New Relic before container shuts down
+    # Run command
+    "$@"
+    # Give it some time to report data to New Relic before container shuts down
     sleep 60
+else
+    exec "$@"
 fi
