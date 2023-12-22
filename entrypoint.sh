@@ -1,6 +1,7 @@
 #!/bin/bash
 set -e
 
+TIME_WAIT_FINISH="${TIME_TO_FINISH:-60}"
 SCRIPT_INIT_DIR='/var/www/html/docker/init.d'
 THEFILE="$PHP_INI_DIR/conf.d/cusmtom.ini"
 [ -f "$THEFILE" ] && rm "$THEFILE"
@@ -49,6 +50,9 @@ then
     cp /etc/newrelic/newrelic.cfg.template /etc/newrelic/newrelic.cfg
     # Start the daemon manually
     /etc/init.d/newrelic-daemon restart
+    #Dummy request to connect the app to New Relic and give it a second to finish
+    php -i > /dev/null
+    sleep 1
 fi
 
 
@@ -71,7 +75,7 @@ then
     # Run command
     "$@"
     # Give it some time to report data to New Relic before container shuts down
-    sleep 60
+    sleep $TIME_WAIT_FINISH
 else
     exec "$@"
 fi
