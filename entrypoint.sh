@@ -1,6 +1,7 @@
 #!/bin/bash
 set -e
 
+TIME_WAIT_FINISH="${TIME_TO_FINISH:-60}"
 SCRIPT_INIT_DIR='/var/www/html/docker/init.d'
 THEFILE="$PHP_INI_DIR/conf.d/cusmtom.ini"
 [ -f "$THEFILE" ] && rm "$THEFILE"
@@ -45,10 +46,13 @@ fi
 if [[ "$PHP_EXECUTION_MODE" = "command" && "$NEWRELIC" = "yes" ]];
 then
     echo "Executing php in command mode"
-    #copy default config in order to start daemon
+    # Copy default config in order to start daemon
     cp /etc/newrelic/newrelic.cfg.template /etc/newrelic/newrelic.cfg
-    #start the daemon manually
+    # Start the daemon manually
     /etc/init.d/newrelic-daemon restart
+    #Dummy request to connect the app to New Relic and give it a second to finish
+    php -i > /dev/null
+    sleep 1
 fi
 
 
@@ -59,17 +63,19 @@ if [[ -d $SCRIPT_INIT_DIR ]]; then
     done
 fi
 
-# first arg is `-f` or `--some-option`
+# First arg is `-f` or `--some-option`
 if [ "${1#-}" != "$1" ]; then
 	set -- php-fpm "$@"
 fi
 
 echo "Executing entrypoint: $@"
 
-exec "$@"
-
 if [[ "$PHP_EXECUTION_MODE" = "command" && "$NEWRELIC" = "yes" ]];
 then
-    #Give it some time to report data to New Relic before container shuts down
-    sleep 60
+    # Run command
+    "$@"
+    # Give it some time to report data to New Relic before container shuts down
+    sleep $TIME_WAIT_FINISH
+else
+    exec "$@"
 fi
