@@ -1,5 +1,8 @@
 Changelog php-fpm version 8.x
 
+* v3.16
+	* Add Dummy request to connect the app to New Relic
+	
 * v3.15
 	* Start newrelic daemon on command execution mode
 
