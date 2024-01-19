@@ -1,4 +1,4 @@
-FROM php:8.2-fpm-bookworm
+FROM php:8.3-fpm-bookworm
 
 ARG XDEBUG=xdebug-3.2.2
 ARG APCU=apcu-5.1.23
