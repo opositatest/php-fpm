@@ -1,5 +1,8 @@
 Changelog php-fpm version 8.x
 
+* v3.17
+	* Update php-fpm to version 8.3
+
 * v3.16
 	* Add Dummy request to connect the app to New Relic
 	
