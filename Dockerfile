@@ -1,8 +1,8 @@
 FROM php:8.3-fpm-bookworm
 
-ARG XDEBUG=xdebug-3.3.1
+ARG XDEBUG=xdebug-3.3.2
 ARG APCU=apcu-5.1.23
-ARG NEWRELIC=10.15.0.4
+ARG NEWRELIC=10.19.0.9
 ARG PHP_SECURITY_CHECKER=2.0.6
 
 COPY entrypoint.sh /entrypoint.sh
