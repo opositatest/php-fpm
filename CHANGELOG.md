@@ -1,5 +1,10 @@
 Changelog php-fpm version 8.x
 
+* v3.18
+	* Update PHP to 8.3.2
+	* Update newrelic to 10.19.0.9
+	* Update xdebug to 3.3.2
+
 * v3.17
 	* Update php-fpm to version 8.3
 
