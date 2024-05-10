@@ -1,6 +1,7 @@
 FROM php:7.4-fpm-buster
 
-ARG XDEBUG=xdebug-3.1.6
+# XDEBUG 3.1.6 latest version with support php 7.4
+ARG XDEBUG=xdebug-3.1.6 
 ARG APCU=apcu-5.1.23
 ARG NEWRELIC=10.19.0.9
 ARG PHP_SECURITY_CHECKER=2.0.6
