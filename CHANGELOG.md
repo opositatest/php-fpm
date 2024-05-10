@@ -1,6 +1,8 @@
 
 Changelog php-fpm version 7.x
 
+* v2.5
+	* Update php xdeug, apcu and newrelic agent
 
 * v2.4
 	* Update newrelic agent
