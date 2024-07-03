@@ -1,6 +1,11 @@
 
 Changelog php-fpm version 7.x
 
+* v2.7
+	* Update newrelic php agent to 10.22.0.12
+	* Update local-php-security-checker to 2.1.3
+	* PHP is at 7.4.33
+
 * v2.6
 	* Update php xdeug, apcu and newrelic agent
 
