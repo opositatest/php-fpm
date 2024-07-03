@@ -1,5 +1,10 @@
 Changelog php-fpm version 8.x
 
+* v3.19
+	* Update PHP to 8.3.8
+	* Update newrelic php agent to 10.22.0.12
+	* Update local-php-security-checker to 2.1.3
+
 * v3.18
 	* Update PHP to 8.3.2
 	* Update newrelic to 10.19.0.9
