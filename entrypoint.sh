@@ -4,6 +4,9 @@ set -e
 TIME_WAIT_FINISH="${TIME_TO_FINISH:-60}"
 SCRIPT_INIT_DIR='/var/www/html/docker/init.d'
 THEFILE="$PHP_INI_DIR/conf.d/cusmtom.ini"
+SCRIPT_INIT_DIR='/var/www/html/docker/init.d'
+NEW_RELIC_IGNORE='Symfony\\Component\\HttpKernel\\Exception\\NotFoundHttpException,Symfony\\Component\\HttpKernel\\Exception\\AccessDeniedHttpException,Symfony\\Component\\HttpKernel\\Exception\\MethodNotAllowedHttpException'
+
 [ -f "$THEFILE" ] && rm "$THEFILE"
 
 echo "Executing app in mode $APP_ENV"
@@ -21,7 +24,6 @@ if [[ "$NEWRELIC" = "yes" ]];
 then
     echo "Executing with newrelic daemon"
     if [[ -n $NEW_RELIC_KEY && -n $NEW_RELIC_APP_NAME ]]; then
-        NEW_RELIC_IGNORE='Symfony\\Component\\HttpKernel\\Exception\\NotFoundHttpException,Symfony\\Component\\HttpKernel\\Exception\\AccessDeniedHttpException,Symfony\\Component\\HttpKernel\\Exception\\MethodNotAllowedHttpException'
         sed -E -i \
             -e 's/(newrelic.license) =.*/\1 = "'$NEW_RELIC_KEY'"/' \
             -e 's/(newrelic.appname) =.*/\1 = "'$NEW_RELIC_APP_NAME'"/' \

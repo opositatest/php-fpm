@@ -71,6 +71,13 @@ Changelog php-fpm version 8.x
 * v3.0
 	* Upgrade to php-fpm 8.1.x
 
+* v2.2
+	* Added a handler to run all scripts in init.d folder before running the php-fpm service
+	* Migrated Xdebug setting from v2 to v3
+
+* v2.1
+	* Disable distributed tracing in New Relic
+
 * v2.0
 	* Change connection to unix socket
 
