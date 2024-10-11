@@ -3,7 +3,6 @@ FROM php:8.3-fpm-bookworm
 ARG XDEBUG=xdebug-3.3.2
 ARG APCU=apcu-5.1.23
 ARG NEWRELIC=10.22.0.12
-ARG PHP_SECURITY_CHECKER=2.1.3
 
 COPY entrypoint.sh /entrypoint.sh
 COPY config/ /usr/local/etc/php/config/
