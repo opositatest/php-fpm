@@ -1,4 +1,75 @@
-Changelog php-fpm version 7.x
+Changelog php-fpm version 8.x
+
+* v3.19
+	* Update PHP to 8.3.8
+	* Update newrelic php agent to 10.22.0.12
+	* Update local-php-security-checker to 2.1.3
+
+* v3.18
+	* Update PHP to 8.3.2
+	* Update newrelic to 10.19.0.9
+	* Update xdebug to 3.3.2
+
+* v3.17
+	* Update php-fpm to version 8.3
+
+* v3.16
+	* Add Dummy request to connect the app to New Relic
+	
+* v3.15
+	* Start newrelic daemon on command execution mode
+
+* v3.14
+	* Add execution mode "command"
+
+* v3.13
+	* Add amqp php extension
+
+* v3.12
+	* Update xdebug	client host
+
+* v3.11
+	* Change config paramter xdebug.start_with_request to trigger
+
+* v3.10
+	* Update PHP to 8.2.12
+	* Update newrelic to 10.14.0.3
+	* Update apcu to 5.1.23
+
+* v3.9
+	* Update to PHP 8.2.7
+	* Update newrelic to 10.11.0.3
+	* Update xdebug to 3.2.2
+
+* v3.8
+	* Update to PHP 8.2.5
+	* Update newrelic to 10.9.0.324
+
+* v3.7
+	* Added support for PostgreSQL
+	
+* v3.6
+	* Update to PHP 8.1.14
+	* Update newrelic to 10.5.0.317, performance issues
+
+* v3.5
+	* Update to PHP 8.1.13
+
+* v3.4
+	* Update dependencies
+
+* v3.3
+	* Added a handler to run all scripts in init.d folder before running the php-fpm service
+	* Migrated Xdebug setting from v2 to v3
+
+* v3.2
+	* Update php and dependencies
+
+* v3.1
+	* Disable distrbuted tracing in New Relic
+
+* v3.0
+	* Upgrade to php-fpm 8.1.x
 
 * v2.2
 	* Added a handler to run all scripts in init.d folder before running the php-fpm service

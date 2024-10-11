@@ -1,9 +1,8 @@
-FROM php:7.4-fpm-buster
+FROM php:8.3-fpm-bookworm
 
-ARG XDEBUG=xdebug-3.1.3
-ARG APCU=apcu-5.1.21
-ARG NEWRELIC=9.21.0.311
-ARG PHP_SECURITY_CHECKER=2.0.3
+ARG XDEBUG=xdebug-3.3.2
+ARG APCU=apcu-5.1.23
+ARG NEWRELIC=10.22.0.12
 
 COPY entrypoint.sh /entrypoint.sh
 COPY config/ /usr/local/etc/php/config/
@@ -24,12 +23,15 @@ RUN apt-get update && apt-get install --no-install-recommends -y \
     gnupg \
     libonig-dev \
     wkhtmltopdf \
+    libpq-dev \
+    librabbitmq-dev \
     && curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer \
-    && docker-php-ext-install iconv pdo_mysql mbstring gettext exif intl zip opcache bcmath xmlrpc soap \
+    && docker-php-ext-install iconv pdo_mysql pdo_pgsql mbstring gettext exif intl zip opcache bcmath xml soap \
     && docker-php-ext-configure gd --with-freetype --with-jpeg \
     && docker-php-ext-install -j$(nproc) gd \
     && pecl install ${XDEBUG} ${APCU} \
-    && docker-php-ext-enable xdebug apcu \
+    && pecl install amqp \
+    && docker-php-ext-enable xdebug apcu amqp \
     && chmod 755 /entrypoint.sh \
     && apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
@@ -39,10 +41,7 @@ RUN curl -sL https://download.newrelic.com/php_agent/archive/${NEWRELIC}/newreli
     export NR_INSTALL_SILENT=1 && \
     /tmp/newrelic-php5-*/newrelic-install install && \
     chown www-data:www-data -R /var/log/newrelic/ && \
-    rm -rf /tmp/newrelic-php5-* /tmp/nrinstall* && \
-    curl -sL "https://github.com/fabpot/local-php-security-checker/releases/download/v${PHP_SECURITY_CHECKER}/local-php-security-checker_${PHP_SECURITY_CHECKER}_linux_amd64" \
-        -o /usr/local/bin/php-security-checker && \
-    chmod +x /usr/local/bin/php-security-checker
+    rm -rf /tmp/newrelic-php5-* /tmp/nrinstall*
 
 ENTRYPOINT ["/entrypoint.sh"]
 CMD ["php-fpm"]

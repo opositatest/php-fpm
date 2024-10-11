@@ -1,4 +1,3 @@
-version: '3.2'
 services:
   php:
     build: .
@@ -8,7 +7,7 @@ services:
     environment:
       - APP_ENV=${APP_ENV}
   sut:
-    image: opositatest/nginx
+    image: opositatest/nginx:v2.0
     volumes:
       - ./test/index.php:/var/www/html/public/index.php
       - ./test/test.sh:/tmp/test.sh
