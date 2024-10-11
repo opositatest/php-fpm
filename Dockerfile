@@ -41,7 +41,7 @@ RUN curl -sL https://download.newrelic.com/php_agent/archive/${NEWRELIC}/newreli
     export NR_INSTALL_SILENT=1 && \
     /tmp/newrelic-php5-*/newrelic-install install && \
     chown www-data:www-data -R /var/log/newrelic/ && \
-    rm -rf /tmp/newrelic-php5-* /tmp/nrinstall* && \
+    rm -rf /tmp/newrelic-php5-* /tmp/nrinstall*
 
 ENTRYPOINT ["/entrypoint.sh"]
 CMD ["php-fpm"]
