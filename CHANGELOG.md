@@ -1,5 +1,8 @@
 Changelog php-fpm version 8.x
 
+* v3.21
+	* Update newrelic php agent to 11.2.0.15
+
 * v3.20
 	* Remove deprecated security checker
 
