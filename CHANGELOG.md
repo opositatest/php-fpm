@@ -1,5 +1,8 @@
 Changelog php-fpm version 8.x
 
+* v3.22
+	* feat: enable New Relic logging context
+
 * v3.21
 	* Update newrelic php agent to 11.2.0.15
 
