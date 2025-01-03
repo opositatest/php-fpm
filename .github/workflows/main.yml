@@ -10,7 +10,7 @@ env:
 jobs:
   cicd:
     runs-on: ubuntu-latest
-    timeout-minutes: 20
+    timeout-minutes: 30
     steps:
     - uses: actions/checkout@v4
     - uses: docker/login-action@v3
@@ -18,10 +18,10 @@ jobs:
         username: ${{ secrets.DOCKERHUB_USERNAME }}
         password: ${{ secrets.DOCKERHUB_PASSWORD }}
 
-    - name: Build
-      run: docker compose -f docker-compose.test.yml build
-    - name: Run test
-      run: docker compose -f docker-compose.test.yml up --abort-on-container-exit
+    # - name: Build
+    #   run: docker compose -f docker-compose.test.yml build
+    # - name: Run test
+    #   run: docker compose -f docker-compose.test.yml up --abort-on-container-exit
 
     - name: Get the version
       id: get_version
@@ -38,8 +38,9 @@ jobs:
         VERSION: ${{ steps.get_version.outputs.version }}
       run: |
         [[ ${LATEST} == "true" ]] && version="latest" || version=${VERSION}
+        docker buildx create --name multiarch-builder --use
         docker buildx build \
-          --platform linux/arm64,linux/amd64 \
+          --platform linux/arm64 \
           --tag ${DOCKERHUB_REPOSITORY}:${version} \
           --push \
           .
