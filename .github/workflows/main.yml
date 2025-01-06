@@ -13,8 +13,13 @@ jobs:
     secrets: inherit
 
   cicd:
-    runs-on: ubuntu-latest
+    runs-on: ${{ matrix.runner }}
     timeout-minutes: 20
+    strategy:
+      matrix:
+        include:
+          - runner: public-ubuntu-latest-arm64
+          - runner: ubuntu-latest
     steps:
     - uses: actions/checkout@v4
     - uses: docker/login-action@v3
