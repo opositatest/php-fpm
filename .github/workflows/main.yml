@@ -43,7 +43,6 @@ jobs:
         id: build
         run: |
           docker build -t ${DOCKERHUB_REPOSITORY}:${version}-${{ matrix.arch }} .
-          docker tag ${DOCKERHUB_REPOSITORY}:${version}-${{ matrix.arch }} ${ECR_REGISTRY}/${ECR_REPOSITORY}:${version}-${{ matrix.arch }}
           docker push ${DOCKERHUB_REPOSITORY}:${version}-${{ matrix.arch }}
 
   merge:
