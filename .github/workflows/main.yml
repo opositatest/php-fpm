@@ -42,5 +42,5 @@ jobs:
       - name: Build, tag and push image to Docker Hub and ECR
         id: build
         run: |
-          docker build -t ${DOCKERHUB_REPOSITORY}:${version} .
+          docker build --platform linux/${{ matrix.os }} -t ${DOCKERHUB_REPOSITORY}:${version} .
           docker push ${DOCKERHUB_REPOSITORY}:${version}
