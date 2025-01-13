@@ -46,7 +46,9 @@ jobs:
       - name: Build, tag and push image to Docker Hub and ECR amd64
         id: build-amd64
         run: |
+          docker buildx create --use --name multiarch-builder
+          docker buildx inspect --bootstrap
           docker build \
-            --platform linux/arm64,linux/amd64 \
+            --platform linux/amd64 \
             -t ${DOCKERHUB_REPOSITORY}:${version} .
           docker push ${DOCKERHUB_REPOSITORY}:${version}
