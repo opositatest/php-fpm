@@ -25,16 +25,16 @@ RUN apt-get update && apt-get install --no-install-recommends -y \
     wkhtmltopdf \
     libpq-dev \
     librabbitmq-dev \
-    && curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer \
-    && docker-php-ext-install iconv pdo_mysql pdo_pgsql mbstring gettext exif intl zip opcache bcmath xml soap \
-    && docker-php-ext-configure gd --with-freetype --with-jpeg \
-    && docker-php-ext-install -j$(nproc) gd \
-    && pecl install ${XDEBUG} ${APCU} \
-    && pecl install amqp \
-    && docker-php-ext-enable xdebug apcu amqp \
-    && chmod 755 /entrypoint.sh \
-    && apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
-
+     curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
+    # && docker-php-ext-install iconv pdo_mysql pdo_pgsql mbstring gettext exif intl zip opcache bcmath xml soap \
+    # && docker-php-ext-configure gd --with-freetype --with-jpeg \
+    # && docker-php-ext-install -j$(nproc) gd \
+    # && pecl install ${XDEBUG} ${APCU} \
+    # && pecl install amqp \
+    # && docker-php-ext-enable xdebug apcu amqp \
+    # && chmod 755 /entrypoint.sh \
+    # && apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+    
 RUN curl -sL https://download.newrelic.com/php_agent/archive/${NEWRELIC}/newrelic-php5-${NEWRELIC}-linux.tar.gz | \
     tar -C /tmp -zx && \
     export NR_INSTALL_USE_CP_NOT_LN=1 && \
