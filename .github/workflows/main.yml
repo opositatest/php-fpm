@@ -15,7 +15,7 @@ jobs:
   build:
     # needs: test
     name: build
-    runs-on: ubuntu-24.04-arm64
+    runs-on: public-ubuntu-latest-arm64
     timeout-minutes: 20
 
     steps:
