@@ -14,13 +14,9 @@ jobs:
 
   build:
     # needs: test
-    name: ${{ matrix.os }}, ${{ matrix.arch }}
-    runs-on: [ "${{ matrix.os }}-${{ matrix.arch }}" ]
+    name: build
+    runs-on: ubuntu-24.04-arm64
     timeout-minutes: 20
-    strategy:
-      matrix:
-        os: [ ubuntu-24.04 ]
-        arch: [ amd64, arm64 ]
 
     steps:
       - uses: actions/checkout@v4
@@ -39,8 +35,18 @@ jobs:
         if: github.event_name == 'push' && github.ref == 'refs/heads/main'
         run: echo "version=latest" >> $GITHUB_ENV
 
-      - name: Build, tag and push image to Docker Hub and ECR
-        id: build
+      - name: Build, tag and push image to Docker Hub and ECR arm64
+        id: build-arm64
         run: |
-          docker build --platform linux/${{ matrix.arch }} -t ${DOCKERHUB_REPOSITORY}:${version} .
+          docker build \
+            --platform linux/arm64 \
+            -t ${DOCKERHUB_REPOSITORY}:${version} .
+          docker push ${DOCKERHUB_REPOSITORY}:${version}
+      
+      - name: Build, tag and push image to Docker Hub and ECR amd64
+        id: build-amd64
+        run: |
+          docker build \
+            --platform linux/arm64,linux/amd64 \
+            -t ${DOCKERHUB_REPOSITORY}:${version} .
           docker push ${DOCKERHUB_REPOSITORY}:${version}
