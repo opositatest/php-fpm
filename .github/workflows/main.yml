@@ -43,15 +43,13 @@ jobs:
       - name: Build and tag image to Docker Hub and ECR arm64
         id: build-arm64
         run: |
-          docker buildx build \
-            --platform linux/arm64 \
-            -t ${DOCKERHUB_REPOSITORY}:${version}-arm64
+          docker buildx build --platform linux/arm64 \
+          -t ${DOCKERHUB_REPOSITORY}:${version}-arm64
       
       - name: Build and tag image to Docker Hub and ECR amd64
         id: build-amd64
         run: |
-          docker buildx build \
-            --platform linux/amd64 \
+          docker buildx build --platform linux/amd64 \
             -t ${DOCKERHUB_REPOSITORY}:${version}-amd64
 
       - name: Create and push multi-arch manifest
