@@ -35,20 +35,23 @@ jobs:
         if: github.event_name == 'push' && github.ref == 'refs/heads/main'
         run: echo "version=latest" >> $GITHUB_ENV
 
+      - name: Install drivers
+        run: |
+          docker buildx create --use --name multiarch-builder
+          docker buildx inspect --bootstrap
+
       - name: Build, tag and push image to Docker Hub and ECR arm64
         id: build-arm64
         run: |
-          docker build \
+          docker buildx build \
             --platform linux/arm64 \
-            -t ${DOCKERHUB_REPOSITORY}:${version} .
-          docker push ${DOCKERHUB_REPOSITORY}:${version}
+            -t ${DOCKERHUB_REPOSITORY}:${version} \
+            --push .
       
       - name: Build, tag and push image to Docker Hub and ECR amd64
         id: build-amd64
         run: |
-          docker buildx create --use --name multiarch-builder
-          docker buildx inspect --bootstrap
-          docker build \
+          docker buildx build \
             --platform linux/amd64 \
-            -t ${DOCKERHUB_REPOSITORY}:${version} .
-          docker push ${DOCKERHUB_REPOSITORY}:${version}
+            -t ${DOCKERHUB_REPOSITORY}:${version} \
+            --push .
