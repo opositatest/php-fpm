@@ -39,7 +39,7 @@ jobs:
         if: github.event_name == 'push' && github.ref == 'refs/heads/main'
         run: echo "version=latest" >> $GITHUB_ENV
 
-      - name: Build, tag and push image to Docker Hub and ECR
+      - name: Build, tag and push image to Docker Hub
         id: build
         run: |
           docker build -t ${DOCKERHUB_REPOSITORY}:${version}-${{ matrix.arch }} .
