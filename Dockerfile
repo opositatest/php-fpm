@@ -1,8 +1,8 @@
 FROM php:8.3-fpm-bookworm
 
-ARG XDEBUG=xdebug-3.3.2
-ARG APCU=apcu-5.1.23
-ARG NEWRELIC=11.2.0.15
+ARG XDEBUG=xdebug-3.4.1
+ARG APCU=apcu-5.1.24
+ARG NEWRELIC=11.5.0.18
 
 COPY entrypoint.sh /entrypoint.sh
 COPY config/ /usr/local/etc/php/config/
