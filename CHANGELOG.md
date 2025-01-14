@@ -1,5 +1,11 @@
 Changelog php-fpm version 8.x
 
+* v3.23
+	* Update newrelic to 11.5.0.18
+	* Update xdebug to 3.4.1
+	* Update acpu to 5.1.24
+	* Update PHP to 8.3.15
+
 * v3.22
 	* feat: enable New Relic logging context
 
