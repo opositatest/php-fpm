@@ -2,8 +2,8 @@ FROM php:7.4-fpm-buster
 
 # XDEBUG 3.1.6 latest version with support php 7.4
 ARG XDEBUG=xdebug-3.1.6 
-ARG APCU=apcu-5.1.23
-ARG NEWRELIC=11.2.0.15
+ARG APCU=apcu-5.1.24
+ARG NEWRELIC=11.5.0.18
 ARG PHP_SECURITY_CHECKER=2.1.3
 
 COPY entrypoint.sh /entrypoint.sh
