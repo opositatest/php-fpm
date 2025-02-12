@@ -1,5 +1,8 @@
 Changelog php-fpm version 8.x
 
+* v3.24
+	* Support for Newrelic daemon host
+
 * v3.23
 	* Update newrelic to 11.5.0.18
 	* Update xdebug to 3.4.1
