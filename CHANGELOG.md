@@ -1,6 +1,9 @@
 
 Changelog php-fpm version 7.x
 
+* v2.10
+	* Support for Newrelic daemon host
+
 * v2.9
 	* Update newrelic php agent to 11.5.0.18
 	* Update acpu to 5.1.24
