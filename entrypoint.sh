@@ -4,7 +4,6 @@ set -e
 TIME_WAIT_FINISH="${TIME_TO_FINISH:-60}"
 SCRIPT_INIT_DIR='/var/www/html/docker/init.d'
 THEFILE="$PHP_INI_DIR/conf.d/cusmtom.ini"
-SCRIPT_INIT_DIR='/var/www/html/docker/init.d'
 NEW_RELIC_IGNORE='Symfony\\Component\\HttpKernel\\Exception\\NotFoundHttpException,Symfony\\Component\\HttpKernel\\Exception\\AccessDeniedHttpException,Symfony\\Component\\HttpKernel\\Exception\\MethodNotAllowedHttpException'
 NEW_RELIC_FILE='/usr/local/etc/php/conf.d/newrelic.ini'
 
