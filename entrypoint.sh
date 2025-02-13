@@ -4,8 +4,8 @@ set -e
 TIME_WAIT_FINISH="${TIME_TO_FINISH:-60}"
 SCRIPT_INIT_DIR='/var/www/html/docker/init.d'
 THEFILE="$PHP_INI_DIR/conf.d/cusmtom.ini"
-SCRIPT_INIT_DIR='/var/www/html/docker/init.d'
 NEW_RELIC_IGNORE='Symfony\\Component\\HttpKernel\\Exception\\NotFoundHttpException,Symfony\\Component\\HttpKernel\\Exception\\AccessDeniedHttpException,Symfony\\Component\\HttpKernel\\Exception\\MethodNotAllowedHttpException'
+NEW_RELIC_FILE='/usr/local/etc/php/conf.d/newrelic.ini'
 
 [ -f "$THEFILE" ] && rm "$THEFILE"
 
@@ -20,21 +20,24 @@ else
     cp $PHP_INI_DIR/php.ini-production $PHP_INI_DIR/php.ini
 fi
 
-if [[ "$NEWRELIC" = "yes" ]];
-then
-    echo "Executing with newrelic daemon"
-    if [[ -n $NEW_RELIC_KEY && -n $NEW_RELIC_APP_NAME ]]; then
+if [[ "$NEWRELIC" = "yes" && -n "$NEW_RELIC_KEY" && -n "$NEW_RELIC_APP_NAME" && -s "$NEW_RELIC_FILE" ]]; then
+    [[ ! -n "$NEWRELIC_DAEMON_ADDRESS" ]] && echo "Executing with newrelic daemon on localhost"
+    sed -E -i \
+        -e 's/(newrelic.license) =.*/\1 = "'$NEW_RELIC_KEY'"/' \
+        -e 's/(newrelic.appname) =.*/\1 = "'$NEW_RELIC_APP_NAME'"/' \
+        -e "s/;*(newrelic.error_collector.ignore_exceptions) =.*/\1 = \"$NEW_RELIC_IGNORE\"/" \
+        -e 's/;*(newrelic.distributed_tracing_enabled) =.*/\1 = false/' \
+        -e 's/;*(newrelic.application_logging.forwarding.context_data.enabled) =.*/\1 = true/' \
+        "$NEW_RELIC_FILE"
+    if [[ -n "$NEWRELIC_DAEMON_ADDRESS" ]]; then
+        echo "Executing with newrelic daemon on $NEWRELIC_DAEMON_ADDRESS"
         sed -E -i \
-            -e 's/(newrelic.license) =.*/\1 = "'$NEW_RELIC_KEY'"/' \
-            -e 's/(newrelic.appname) =.*/\1 = "'$NEW_RELIC_APP_NAME'"/' \
-            -e "s/;*(newrelic.error_collector.ignore_exceptions) =.*/\1 = \"$NEW_RELIC_IGNORE\"/" \
-            -e 's/;*(newrelic.distributed_tracing_enabled) =.*/\1 = false/' \
-            -e 's/;*(newrelic.application_logging.forwarding.context_data.enabled) =.*/\1 = true/' \
-            /usr/local/etc/php/conf.d/newrelic.ini
-    fi    
+        -e 's/;*(newrelic.daemon.address) =.*/\1 = "'${NEWRELIC_DAEMON_ADDRESS}'"/' \
+        "$NEW_RELIC_FILE"
+    fi
 else
     echo "Removing newrelic configuration"
-    [ -f "/usr/local/etc/php/conf.d/newrelic.ini" ] && rm "/usr/local/etc/php/conf.d/newrelic.ini"
+    [ -s "$NEW_RELIC_FILE" ] && rm "$NEW_RELIC_FILE"
 fi
 
 if [[ "$XDEBUG" = "yes" ]];
@@ -46,7 +49,7 @@ else
     [ -f "/usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini" ] && rm "/usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini"
 fi
 
-if [[ "$PHP_EXECUTION_MODE" = "command" && "$NEWRELIC" = "yes" ]];
+if [[ "$PHP_EXECUTION_MODE" = "command" && "$NEWRELIC" = "yes" && -n "$NEWRELIC_DAEMON_ADDRESS" ]];
 then
     echo "Executing php in command mode"
     # Copy default config in order to start daemon
@@ -57,7 +60,6 @@ then
     php -i > /dev/null
     sleep 1
 fi
-
 
 # Run all scripts in the init.d directory
 if [[ -d $SCRIPT_INIT_DIR ]]; then
