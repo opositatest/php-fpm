@@ -1,6 +1,9 @@
 
 Changelog php-fpm version 7.x
 
+* v2.11
+	* Add supervisor
+
 * v2.10
 	* Support for Newrelic daemon host
 
