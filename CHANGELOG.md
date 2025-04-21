@@ -1,5 +1,9 @@
 Changelog php-fpm version 8.x
 
+* v3.25
+	* Add supervisor
+	* Fix condition on command mode
+
 * v3.24
 	* Support for Newrelic daemon host
 

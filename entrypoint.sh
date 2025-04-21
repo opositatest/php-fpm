@@ -49,7 +49,7 @@ else
     [ -f "/usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini" ] && rm "/usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini"
 fi
 
-if [[ "$PHP_EXECUTION_MODE" = "command" && "$NEWRELIC" = "yes" && -n "$NEWRELIC_DAEMON_ADDRESS" ]];
+if [[ "$PHP_EXECUTION_MODE" = "command" && "$NEWRELIC" = "yes" ]];
 then
     echo "Executing php in command mode"
     # Copy default config in order to start daemon
