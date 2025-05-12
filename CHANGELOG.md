@@ -1,5 +1,8 @@
 Changelog php-fpm version 8.x
 
+* v3.26
+	* Update newrelic php agent to 11.8.0.22 and xdebug to 3.4.2
+
 * v3.25
 	* Add supervisor
 	* Fix condition on command mode
