@@ -1,6 +1,9 @@
 
 Changelog php-fpm version 7.x
 
+* v2.12
+	* Update newrelic php agent to 11.8.0.22
+
 * v2.11
 	* Add supervisor
 
