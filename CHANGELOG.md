@@ -1,82 +1,108 @@
-
 Changelog php-fpm version 7.x
 
-* v2.12
-	* Update newrelic php agent to 11.8.0.22
+- v2.13
 
-* v2.11
-	* Add supervisor
+  - Update newrelic php agent to 11.9.0.23
 
-* v2.10
-	* Support for Newrelic daemon host
+- v2.12
 
-* v2.9
-	* Update newrelic php agent to 11.5.0.18
-	* Update acpu to 5.1.24
+  - Update newrelic php agent to 11.8.0.22
 
-* v2.8
-	* Update newrelic php agent to 11.2.0.15
+- v2.11
 
-* v2.7
-	* Update newrelic php agent to 10.22.0.12
-	* Update local-php-security-checker to 2.1.3
-	* PHP is at 7.4.33
+  - Add supervisor
 
-* v2.6
-	* Update php xdeug, apcu and newrelic agent
+- v2.10
 
-* v2.5
-	* Update settings to xdebug3
+  - Support for Newrelic daemon host
 
-* v2.4
-	* Update newrelic agent
+- v2.9
 
-* v2.3
-	* Update dependencies
+  - Update newrelic php agent to 11.5.0.18
+  - Update acpu to 5.1.24
 
-* v2.2
-	* Added a handler to run all scripts in init.d folder before running the php-fpm service
-	* Migrated Xdebug setting from v2 to v3
+- v2.8
 
-* v2.1
-	* Disable distributed tracing in New Relic
+  - Update newrelic php agent to 11.2.0.15
 
-* v2.0
-	* Change connection to unix socket
+- v2.7
 
-* v1.10
-	* Move to github workflows
+  - Update newrelic php agent to 10.22.0.12
+  - Update local-php-security-checker to 2.1.3
+  - PHP is at 7.4.33
 
-* v1.9
-	* Add run hooks script exec
+- v2.6
 
-* v1.8
-	* Add php-security-checker to base image
+  - Update php xdeug, apcu and newrelic agent
 
-* v1.7
-	* Remove access_log output
+- v2.5
 
-* v1.6
-	* New optimize config to php-fpm (Up max children, spare and min spare )
+  - Update settings to xdebug3
 
-* v1.5
-	* Update xdebug-3.0.3, apcu-5.1.20, 9.16.0.295
+- v2.4
 
-* v1.4
-	* Enable newrelic distributed_tracing_enabled
+  - Update newrelic agent
 
-* v1.3
-	* Log limit php-fpm log_limit = 8192 
+- v2.3
 
-* v1.2
-	* Exclude exception NotFoundHttpException, AccessDeniedHttpException in NewRelic
+  - Update dependencies
 
-* v1.1
-	* Update newrelic agent
-	* Update apcu
-	* Update xdebug
-	* Update composer to v2
-	* Remove prestissimo composer plugin with Composer 2
+- v2.2
 
-* v1.0
-	* Add php-soap extension
+  - Added a handler to run all scripts in init.d folder before running the php-fpm service
+  - Migrated Xdebug setting from v2 to v3
+
+- v2.1
+
+  - Disable distributed tracing in New Relic
+
+- v2.0
+
+  - Change connection to unix socket
+
+- v1.10
+
+  - Move to github workflows
+
+- v1.9
+
+  - Add run hooks script exec
+
+- v1.8
+
+  - Add php-security-checker to base image
+
+- v1.7
+
+  - Remove access_log output
+
+- v1.6
+
+  - New optimize config to php-fpm (Up max children, spare and min spare )
+
+- v1.5
+
+  - Update xdebug-3.0.3, apcu-5.1.20, 9.16.0.295
+
+- v1.4
+
+  - Enable newrelic distributed_tracing_enabled
+
+- v1.3
+
+  - Log limit php-fpm log_limit = 8192
+
+- v1.2
+
+  - Exclude exception NotFoundHttpException, AccessDeniedHttpException in NewRelic
+
+- v1.1
+
+  - Update newrelic agent
+  - Update apcu
+  - Update xdebug
+  - Update composer to v2
+  - Remove prestissimo composer plugin with Composer 2
+
+- v1.0
+  - Add php-soap extension
