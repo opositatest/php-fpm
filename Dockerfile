@@ -1,4 +1,4 @@
-FROM php:7.4-bullseye
+FROM php:7.4-fpm-bullseye
 
 # XDEBUG 3.1.6 latest version with support php 7.4
 ARG XDEBUG=xdebug-3.1.6 
