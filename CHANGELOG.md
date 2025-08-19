@@ -1,5 +1,9 @@
 Changelog php-fpm version 7.x
 
+- v2.14
+
+  - Update newrelic php agent to 12.0.0.25 and apcu to 5.1.26
+
 - v2.13
 
   - Update newrelic php agent to 11.9.0.23
