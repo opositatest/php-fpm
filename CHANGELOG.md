@@ -1,8 +1,12 @@
 Changelog php-fpm version 7.x
 
-- v2.14
+- v2.15
 
   - Update newrelic php agent to 12.0.0.25 and apcu to 5.1.26
+
+- v2.14
+
+  - Update php iamge to bullseye
 
 - v2.13
 
