@@ -1,5 +1,9 @@
 Changelog php-fpm version 8.x
 
+- v3.29
+
+  - Update newrelic php agent to 12.1.0.26 and apcu to 5.1.27
+
 - v3.28
 
   - Update newrelic php agent to 12.0.0.25, xdebug to 3.4.5 and apcu to 5.1.26
