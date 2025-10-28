@@ -1,4 +1,4 @@
-FROM php:8.4-fpm-bookworm
+FROM php:8.4-fpm-trixie
 
 ARG XDEBUG=xdebug-3.4.6
 ARG APCU=apcu-5.1.27
@@ -22,7 +22,6 @@ RUN apt-get update && apt-get install --no-install-recommends -y \
     ssh \
     gnupg \
     libonig-dev \
-    wkhtmltopdf \
     libpq-dev \
     librabbitmq-dev \
     supervisor \
