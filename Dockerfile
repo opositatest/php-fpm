@@ -1,9 +1,12 @@
+FROM ghcr.io/roadrunner-server/roadrunner:2025 AS roadrunner
 FROM php:8.4-fpm-trixie
 
 ARG XDEBUG=xdebug-3.4.6
 ARG APCU=apcu-5.1.27
 ARG NEWRELIC=12.1.0.26
 
+
+COPY --from=roadrunner /usr/bin/rr /usr/local/bin/rr
 COPY entrypoint.sh /entrypoint.sh
 COPY config/ /usr/local/etc/php/config/
 COPY zz-docker.conf /usr/local/etc/php-fpm.d/zz-docker.conf
@@ -28,7 +31,7 @@ RUN apt-get update && apt-get install --no-install-recommends -y \
     && curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer \
     && docker-php-ext-install iconv pdo_mysql pdo_pgsql mbstring gettext exif intl zip opcache bcmath xml soap \
     && docker-php-ext-configure gd --with-freetype --with-jpeg \
-    && docker-php-ext-install -j$(nproc) gd \
+    && docker-php-ext-install -j$(nproc) gd sockets \
     && pecl install ${XDEBUG} ${APCU} \
     && pecl install amqp \
     && docker-php-ext-enable xdebug apcu amqp \
@@ -44,4 +47,4 @@ RUN curl -sL https://download.newrelic.com/php_agent/archive/${NEWRELIC}/newreli
     rm -rf /tmp/newrelic-php5-* /tmp/nrinstall*
 
 ENTRYPOINT ["/entrypoint.sh"]
-CMD ["php-fpm"]
+CMD /usr/local/bin/rr serve -c /usr/local/etc/php/config/.rr.yml

@@ -1,2 +1,4 @@
 .vscode
 .ide
+/test/vendor/
+/test/src/

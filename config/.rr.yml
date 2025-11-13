@@ -1,0 +1,12 @@
+version: "3"
+
+server:
+  command: "php /var/www/html/public/index.php"
+
+http:
+  address: 0.0.0.0:80
+
+# Do not use development mode in production
+logs:
+  level: debug
+  mode: development

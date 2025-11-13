@@ -3,21 +3,8 @@ services:
     image: php-fpm
     build: .
     volumes:
-      - ./test/index.php:/var/www/html/public/index.php
-      - php_unix_socket:/run/php/
-    environment:
-      - APP_ENV=${APP_ENV}
-  sut:
-    image: opositatest/nginx
-    volumes:
-      - ./test/index.php:/var/www/html/public/index.php
+      - ./test:/var/www/html/public
       - ./test/test.sh:/tmp/test.sh
-      - php_unix_socket:/run/php/
     environment:
       - APP_ENV=${APP_ENV}
-    depends_on:
-      - php
-    command: bash /tmp/test.sh
-
-volumes:
-  php_unix_socket:
+    # command: bash /tmp/test.sh

@@ -1,10 +1,10 @@
 #!/bin/bash
-set -e
+CONTAINER_NAME=php-fpm-test
+docker run -d -it --name ${CONTAINER_NAME} -v $PWD:/var/www/html/public -e APP_ENV=dev -p 80:80 php-fpm
 
-apt update && apt install -y curl --no-install-recommends
+sleep 5
+curl 'http://localhost/'
+printf '\n'
 
-/etc/init.d/nginx start
-
-if [[ $(curl -s 'http://localhost/') != 'Ok' ]];then
-	exit 1
-fi
+docker stop ${CONTAINER_NAME}
+docker rm ${CONTAINER_NAME}
