@@ -1,5 +1,13 @@
 Changelog php-fpm version 8.x
 
+- v4.2
+
+  - Update xdebug to 3.4.7
+
+- v4.1
+
+  - Update image to Debian Trixie
+
 - v4.0
 
   - Update php-fpm to 8.4
