@@ -1,5 +1,9 @@
 Changelog php-fpm version 8.x
 
+- v3.31
+
+  - Update xdebug to 3.4.7
+
 - v3.30
 
   - Update xdebug to 3.4.6
