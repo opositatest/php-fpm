@@ -1,5 +1,9 @@
 Changelog php-fpm version 8.x
 
+- v4.3
+
+  - Install jq command
+
 - v4.2
 
   - Update xdebug to 3.4.7
