@@ -20,6 +20,7 @@ RUN apt-get update && apt-get install --no-install-recommends -y \
     libzip-dev \
     git \
     ssh \
+    jq \
     gnupg \
     libonig-dev \
     libpq-dev \
