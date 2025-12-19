@@ -1,5 +1,9 @@
 Changelog php-fpm version 8.x
 
+- v4.4
+
+  - Update newrelic php agent to 12.3.0.28, xdebug to 3.5.0 and apcu to 5.1.28
+
 - v4.3
 
   - Install jq command

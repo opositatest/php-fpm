@@ -1,8 +1,8 @@
 FROM php:8.4-fpm-trixie
 
-ARG XDEBUG=xdebug-3.4.7
-ARG APCU=apcu-5.1.27
-ARG NEWRELIC=12.1.0.26
+ARG XDEBUG=xdebug-3.5.0
+ARG APCU=apcu-5.1.28
+ARG NEWRELIC=12.3.0.28
 
 COPY entrypoint.sh /entrypoint.sh
 COPY config/ /usr/local/etc/php/config/
