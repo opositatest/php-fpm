@@ -12,6 +12,7 @@ RUN apt-get update && apt-get install --no-install-recommends -y \
     libfreetype6-dev \
     libjpeg62-turbo-dev \
     libpng-dev \
+    libwebp-dev \
     libmcrypt-dev \
     mariadb-client \
     libicu-dev \
@@ -28,7 +29,7 @@ RUN apt-get update && apt-get install --no-install-recommends -y \
     supervisor \
     && curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer \
     && docker-php-ext-install iconv pdo_mysql pdo_pgsql mbstring gettext exif intl zip opcache bcmath xml soap \
-    && docker-php-ext-configure gd --with-freetype --with-jpeg \
+    && docker-php-ext-configure gd --with-freetype --with-webp --with-jpeg \
     && docker-php-ext-install -j$(nproc) gd \
     && pecl install ${XDEBUG} ${APCU} \
     && pecl install amqp \

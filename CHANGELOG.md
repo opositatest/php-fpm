@@ -1,5 +1,8 @@
 Changelog php-fpm version 8.x
 
+- v4.6
+  - Add support for webp in gd
+
 - v4.5
   - Update newrelic php agent to 12.4.0.29
 
