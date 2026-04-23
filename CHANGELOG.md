@@ -1,5 +1,8 @@
 Changelog php-fpm version 8.x
 
+- v4.8
+  - Update newrelic php agent to 12.6.0.34 and xdebug to 3.5.1
+
 - v4.7
   - Update newrelic php agent to 12.5.0.30
 
