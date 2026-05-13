@@ -1,5 +1,8 @@
 Changelog php-fpm version 8.x
 
+- v4.9
+  - Install aws client
+
 - v4.8
   - Update newrelic php agent to 12.6.0.34 and xdebug to 3.5.1
 

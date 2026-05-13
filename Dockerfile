@@ -35,7 +35,10 @@ RUN apt-get update && apt-get install --no-install-recommends -y \
     && pecl install amqp \
     && docker-php-ext-enable xdebug apcu amqp \
     && chmod 755 /entrypoint.sh \
-    && apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+    && apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* \
+    && curl https://awscli.amazonaws.com/awscli-exe-linux-aarch64.zip -o awscliv2.zip \
+    && unzip -q awscliv2.zip \
+    && ./aws/install
 
 RUN curl -sL https://download.newrelic.com/php_agent/archive/${NEWRELIC}/newrelic-php5-${NEWRELIC}-linux.tar.gz | \
     tar -C /tmp -zx && \
