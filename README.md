@@ -12,7 +12,7 @@ Run image:
 > docker run --rm -e APP_ENV=dev -v php_unix_socket:/run/php/ --name [NAME_CONTAINER] [REPOSITORY:TAG] 
 
 Test service php-fpm through Nginx:
-> docker compose -f docker-compose.test.yml up
+> docker compose -f docker-compose.test.yml up --abort-on-container-exit --exit-code-from sut
 
 When finished, remember to go down with:
 > docker compose -f docker-compose.test.yml down

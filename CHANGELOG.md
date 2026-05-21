@@ -1,5 +1,8 @@
 Changelog php-fpm version 8.x
 
+- v4.10
+  - Update newrelic php agent to 12.7.0.36
+
 - v4.9
   - Install aws client
 
