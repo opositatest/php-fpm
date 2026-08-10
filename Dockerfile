@@ -7,6 +7,7 @@ ARG NEWRELIC=12.7.0.36
 COPY entrypoint.sh /entrypoint.sh
 COPY config/ /usr/local/etc/php/config/
 COPY zz-docker.conf /usr/local/etc/php-fpm.d/zz-docker.conf
+COPY docker/slack-alert.sh /usr/local/bin/slack-alert.sh
 
 RUN apt-get update && apt-get install --no-install-recommends -y \
     libfreetype6-dev \
@@ -35,6 +36,7 @@ RUN apt-get update && apt-get install --no-install-recommends -y \
     && pecl install amqp \
     && docker-php-ext-enable xdebug apcu amqp \
     && chmod 755 /entrypoint.sh \
+    && chmod 755 /usr/local/bin/slack-alert.sh \
     && apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* \
     && curl https://awscli.amazonaws.com/awscli-exe-linux-aarch64.zip -o awscliv2.zip \
     && unzip -q awscliv2.zip \
