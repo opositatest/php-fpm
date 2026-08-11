@@ -1,141 +1,193 @@
 Changelog php-fpm version 8.x
 
-* v3.25
-	* Add supervisor
-	* Fix condition on command mode
+- v4.12
+  - Update newrelic php agent to 12.9.0.38 and xdebug to 3.5.3
 
-* v3.24
-	* Support for Newrelic daemon host
+- v4.11
+  - Bake slack-alert script into base image
 
-* v3.23
-	* Update newrelic to 11.5.0.18
-	* Update xdebug to 3.4.1
-	* Update acpu to 5.1.24
-	* Update PHP to 8.3.15
+- v4.10
+  - Update newrelic php agent to 12.7.0.36
 
-* v3.22
-	* feat: enable New Relic logging context
+- v4.9
+  - Install aws client
 
-* v3.21
-	* Update newrelic php agent to 11.2.0.15
+- v4.8
+  - Update newrelic php agent to 12.6.0.34 and xdebug to 3.5.1
 
-* v3.20
-	* Remove deprecated security checker
+- v4.7
+  - Update newrelic php agent to 12.5.0.30
 
-* v3.19
-	* Update PHP to 8.3.8
-	* Update newrelic php agent to 10.22.0.12
-	* Update local-php-security-checker to 2.1.3
+- v4.6
+  - Add support for webp in gd
 
-* v3.18
-	* Update PHP to 8.3.2
-	* Update newrelic to 10.19.0.9
-	* Update xdebug to 3.3.2
+- v4.5
+  - Update newrelic php agent to 12.4.0.29
 
-* v3.17
-	* Update php-fpm to version 8.3
+- v4.4
+  - Update newrelic php agent to 12.3.0.28, xdebug to 3.5.0 and apcu to 5.1.28
 
-* v3.16
-	* Add Dummy request to connect the app to New Relic
-	
-* v3.15
-	* Start newrelic daemon on command execution mode
+- v4.3
+  - Install jq command
 
-* v3.14
-	* Add execution mode "command"
+- v4.2
+  - Update xdebug to 3.4.7
 
-* v3.13
-	* Add amqp php extension
+- v4.1
+  - Update image to Debian Trixie
 
-* v3.12
-	* Update xdebug	client host
+- v4.0
+  - Update php-fpm to 8.4
 
-* v3.11
-	* Change config paramter xdebug.start_with_request to trigger
+- v3.30
+  - Update xdebug to 3.4.6
 
-* v3.10
-	* Update PHP to 8.2.12
-	* Update newrelic to 10.14.0.3
-	* Update apcu to 5.1.23
+- v3.29
+  - Update newrelic php agent to 12.1.0.26 and apcu to 5.1.27
 
-* v3.9
-	* Update to PHP 8.2.7
-	* Update newrelic to 10.11.0.3
-	* Update xdebug to 3.2.2
+- v3.28
+  - Update newrelic php agent to 12.0.0.25, xdebug to 3.4.5 and apcu to 5.1.26
 
-* v3.8
-	* Update to PHP 8.2.5
-	* Update newrelic to 10.9.0.324
+- v3.27
+  - Update newrelic php agent to 11.9.0.23 and xdebug to 3.4.3
 
-* v3.7
-	* Added support for PostgreSQL
-	
-* v3.6
-	* Update to PHP 8.1.14
-	* Update newrelic to 10.5.0.317, performance issues
+- v3.26
+  - Update newrelic php agent to 11.8.0.22 and xdebug to 3.4.2
 
-* v3.5
-	* Update to PHP 8.1.13
+- v3.25
+  - Add supervisor
+  - Fix condition on command mode
 
-* v3.4
-	* Update dependencies
+- v3.24
+  - Support for Newrelic daemon host
 
-* v3.3
-	* Added a handler to run all scripts in init.d folder before running the php-fpm service
-	* Migrated Xdebug setting from v2 to v3
+- v3.23
+  - Update newrelic to 11.5.0.18
+  - Update xdebug to 3.4.1
+  - Update acpu to 5.1.24
+  - Update PHP to 8.3.15
 
-* v3.2
-	* Update php and dependencies
+- v3.22
+  - feat: enable New Relic logging context
 
-* v3.1
-	* Disable distrbuted tracing in New Relic
+- v3.21
+  - Update newrelic php agent to 11.2.0.15
 
-* v3.0
-	* Upgrade to php-fpm 8.1.x
+- v3.20
+  - Remove deprecated security checker
 
-* v2.2
-	* Added a handler to run all scripts in init.d folder before running the php-fpm service
-	* Migrated Xdebug setting from v2 to v3
+- v3.19
+  - Update PHP to 8.3.8
+  - Update newrelic php agent to 10.22.0.12
+  - Update local-php-security-checker to 2.1.3
 
-* v2.1
-	* Disable distributed tracing in New Relic
+- v3.18
+  - Update PHP to 8.3.2
+  - Update newrelic to 10.19.0.9
+  - Update xdebug to 3.3.2
 
-* v2.0
-	* Change connection to unix socket
+- v3.17
+  - Update php-fpm to version 8.3
 
-* v1.10
-	* Move to github workflows
+- v3.16
+  - Add Dummy request to connect the app to New Relic
+- v3.15
+  - Start newrelic daemon on command execution mode
 
-* v1.9
-	* Add run hooks script exec
+- v3.14
+  - Add execution mode "command"
 
-* v1.8
-	* Add php-security-checker to base image
+- v3.13
+  - Add amqp php extension
 
-* v1.7
-	* Remove access_log output
+- v3.12
+  - Update xdebug client host
 
-* v1.6
-	* New optimize config to php-fpm (Up max children, spare and min spare )
+- v3.11
+  - Change config paramter xdebug.start_with_request to trigger
 
-* v1.5
-	* Update xdebug-3.0.3, apcu-5.1.20, 9.16.0.295
+- v3.10
+  - Update PHP to 8.2.12
+  - Update newrelic to 10.14.0.3
+  - Update apcu to 5.1.23
 
-* v1.4
-	* Enable newrelic distributed_tracing_enabled
+- v3.9
+  - Update to PHP 8.2.7
+  - Update newrelic to 10.11.0.3
+  - Update xdebug to 3.2.2
 
-* v1.3
-	* Log limit php-fpm log_limit = 8192 
+- v3.8
+  - Update to PHP 8.2.5
+  - Update newrelic to 10.9.0.324
 
-* v1.2
-	* Exclude exception NotFoundHttpException, AccessDeniedHttpException in NewRelic
+- v3.7
+  - Added support for PostgreSQL
+- v3.6
+  - Update to PHP 8.1.14
+  - Update newrelic to 10.5.0.317, performance issues
 
-* v1.1
-	* Update newrelic agent
-	* Update apcu
-	* Update xdebug
-	* Update composer to v2
-	* Remove prestissimo composer plugin with Composer 2
+- v3.5
+  - Update to PHP 8.1.13
 
-* v1.0
-	* Add php-soap extension
+- v3.4
+  - Update dependencies
+
+- v3.3
+  - Added a handler to run all scripts in init.d folder before running the php-fpm service
+  - Migrated Xdebug setting from v2 to v3
+
+- v3.2
+  - Update php and dependencies
+
+- v3.1
+  - Disable distrbuted tracing in New Relic
+
+- v3.0
+  - Upgrade to php-fpm 8.1.x
+
+- v2.2
+  - Added a handler to run all scripts in init.d folder before running the php-fpm service
+  - Migrated Xdebug setting from v2 to v3
+
+- v2.1
+  - Disable distributed tracing in New Relic
+
+- v2.0
+  - Change connection to unix socket
+
+- v1.10
+  - Move to github workflows
+
+- v1.9
+  - Add run hooks script exec
+
+- v1.8
+  - Add php-security-checker to base image
+
+- v1.7
+  - Remove access_log output
+
+- v1.6
+  - New optimize config to php-fpm (Up max children, spare and min spare )
+
+- v1.5
+  - Update xdebug-3.0.3, apcu-5.1.20, 9.16.0.295
+
+- v1.4
+  - Enable newrelic distributed_tracing_enabled
+
+- v1.3
+  - Log limit php-fpm log_limit = 8192
+
+- v1.2
+  - Exclude exception NotFoundHttpException, AccessDeniedHttpException in NewRelic
+
+- v1.1
+  - Update newrelic agent
+  - Update apcu
+  - Update xdebug
+  - Update composer to v2
+  - Remove prestissimo composer plugin with Composer 2
+
+- v1.0
+  - Add php-soap extension

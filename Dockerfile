@@ -1,17 +1,19 @@
-FROM php:8.3-fpm-bookworm
+FROM php:8.4-fpm-trixie
 
-ARG XDEBUG=xdebug-3.4.1
-ARG APCU=apcu-5.1.24
-ARG NEWRELIC=11.5.0.18
+ARG XDEBUG=xdebug-3.5.3
+ARG APCU=apcu-5.1.28
+ARG NEWRELIC=12.9.0.38
 
 COPY entrypoint.sh /entrypoint.sh
 COPY config/ /usr/local/etc/php/config/
 COPY zz-docker.conf /usr/local/etc/php-fpm.d/zz-docker.conf
+COPY docker/slack-alert.sh /usr/local/bin/slack-alert.sh
 
 RUN apt-get update && apt-get install --no-install-recommends -y \
     libfreetype6-dev \
     libjpeg62-turbo-dev \
     libpng-dev \
+    libwebp-dev \
     libmcrypt-dev \
     mariadb-client \
     libicu-dev \
@@ -20,21 +22,25 @@ RUN apt-get update && apt-get install --no-install-recommends -y \
     libzip-dev \
     git \
     ssh \
+    jq \
     gnupg \
     libonig-dev \
-    wkhtmltopdf \
     libpq-dev \
     librabbitmq-dev \
     supervisor \
     && curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer \
     && docker-php-ext-install iconv pdo_mysql pdo_pgsql mbstring gettext exif intl zip opcache bcmath xml soap \
-    && docker-php-ext-configure gd --with-freetype --with-jpeg \
+    && docker-php-ext-configure gd --with-freetype --with-webp --with-jpeg \
     && docker-php-ext-install -j$(nproc) gd \
     && pecl install ${XDEBUG} ${APCU} \
     && pecl install amqp \
     && docker-php-ext-enable xdebug apcu amqp \
     && chmod 755 /entrypoint.sh \
-    && apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+    && chmod 755 /usr/local/bin/slack-alert.sh \
+    && apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* \
+    && curl https://awscli.amazonaws.com/awscli-exe-linux-aarch64.zip -o awscliv2.zip \
+    && unzip -q awscliv2.zip \
+    && ./aws/install
 
 RUN curl -sL https://download.newrelic.com/php_agent/archive/${NEWRELIC}/newrelic-php5-${NEWRELIC}-linux.tar.gz | \
     tar -C /tmp -zx && \
