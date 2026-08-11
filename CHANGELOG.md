@@ -1,6 +1,12 @@
 Changelog php-fpm version 8.x
 
 - v4.10
+  - Update newrelic php agent to 12.9.0.38 and xdebug to 3.5.3
+
+- v4.11
+  - Bake slack-alert script into base image
+
+- v4.10
   - Update newrelic php agent to 12.7.0.36
 
 - v4.9
