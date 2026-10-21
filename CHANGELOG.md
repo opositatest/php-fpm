@@ -1,5 +1,8 @@
 Changelog php-fpm version 8.x
 
+- v4.14
+  - Update PHP to 8.4.27 (security release)
+
 - v4.13
   - Update newrelic php agent to 12.11.0.40
 
